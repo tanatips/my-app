@@ -2,24 +2,25 @@ class UploadFile
 {
     constructor(){
     }
-    static SendFile(FILENAME,URL,RESULTUPLOAD){
+    static SendFile(FILES,URL,RESULTUPLOAD){
         var lstResult=[];
         lstResult.push("<table width='100%' id='listUpload'>");
         lstResult.push("<tbody>");
         lstResult.push("<tr><th width='10%'>No</th><th width='30%'>File Name</th> <th width='60%'>Progress</th></tr>");
         var rank = new Array(); 
-        for(var j = 0;j<FILENAME.files.length;j++)
+        debugger;
+        for(var j = 0;j< FILES.length;j++)
         {
           var tmp = Math.floor((Math.random()*100000)+3);
           rank.push(tmp);
-          lstResult.push("<tr><td>"+(j+1)+"</td><td>"+FILENAME.files[j].name+"</td><td><div class='myProgress' id='progress"+tmp+"'><div class='myBar' id='bar"+tmp+"'></div></div></td></tr>");
+          lstResult.push("<tr><td>"+(j+1)+"</td><td>"+FILES[j].name+"</td><td><div class='myProgress' id='progress"+tmp+"'><div class='myBar' id='bar"+tmp+"'></div></div></td></tr>");
         }
         lstResult.push("</tbody>");
         lstResult.push("</table>");
         RESULTUPLOAD.innerHTML = lstResult.join("");
-        for(var i = 0;i<FILENAME.files.length;i++)
+        for(var i = 0;i< FILES.length;i++)
         { 
-          this.Upload(FILENAME.files[i],URL,rank[i]);
+          this.Upload(FILES[i],URL,rank[i]);
         }
     }
     static Upload(file,url,rank){

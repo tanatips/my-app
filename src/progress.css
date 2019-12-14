@@ -13,7 +13,20 @@
     border-radius:50px;
 
 }
-.dropbox {border: 3px dashed #ccc; margin: 10px; min-height: 100px; padding: 10px;}
+#dropbox {
+  border: 3px dashed #ccc;   
+  margin: 10px; 
+  min-height: 100px; 
+  padding: 10px;
+  text-align:center;
+
+}
+#dropbox.hover{
+  color: #f00;
+	border-color: #f00;
+	border-style: solid;
+	box-shadow: inset 0 3px 4px #888;
+}
 #listUpload {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -47,4 +60,20 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+.upload-drop-zone{
+  height:200px;
+  border-width:2px;
+  margin-bottom:20px;
+}
+.upload-drop-zone{
+  color:#ccc;
+  border-style:dashed;
+  border-color:#ccc;
+  line-height: 200px;
+  text-align: center;
+}
+.upload-drop-zone.drop{
+  color:#222;
+  border-color:#222;
 }
