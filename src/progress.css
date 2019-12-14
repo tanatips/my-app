@@ -1,0 +1,50 @@
+.myProgress {
+    width: 100%;
+    background-color: rgb(216, 214, 214);
+    height:20px;
+  }
+  
+.myBar {
+    width: 1%;
+    height: 20px;
+    background-color: rgba(70, 168, 37, 1);;
+    font-weight: bold;
+    color:whitesmoke;
+    border-radius:50px;
+
+}
+.dropbox {border: 3px dashed #ccc; margin: 10px; min-height: 100px; padding: 10px;}
+#listUpload {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#listUpload td, #listUpload th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#listUpload tr:nth-child(even){background-color: #f2f2f2;}
+
+#listUpload tr:hover {background-color: #ddd;}
+
+#listUpload th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(193, 196, 193);
+  color: rgb(103, 102, 102);
+}
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}

@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+.dev_center{
+  text-align: center;
+  align-content: center;
+  width: 100%;
+  border: 0cm;
+  border-color: red;
+}
+input[type="file"]{
+  width:auto;
+  padding:initial;
+  line-height: initial;
+  border:initial;
+  background-color: hsl(0, 0%, 100%);
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  box-shadow: none;
+}
+input[type="file"]{
+  height: 28px;
+  *margin-top:4px;
+  line-height: 28px;
+}
