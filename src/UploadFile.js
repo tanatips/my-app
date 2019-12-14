@@ -8,7 +8,7 @@ class UploadFile
         lstResult.push("<tbody>");
         lstResult.push("<tr><th width='10%'>No</th><th width='30%'>File Name</th> <th width='60%'>Progress</th></tr>");
         var rank = new Array(); 
-        debugger;
+  
         for(var j = 0;j< FILES.length;j++)
         {
           var tmp = Math.floor((Math.random()*100000)+3);
@@ -21,13 +21,13 @@ class UploadFile
         for(var i = 0;i< FILES.length;i++)
         { 
           this.Upload(FILES[i],URL,rank[i]);
+          
         }
     }
     static Upload(file,url,rank){
             var fd = new FormData();
             fd.append("filename", file);
             var xhr = new Array();
-           
             xhr[rank] = new XMLHttpRequest();
             xhr[rank].open('POST', url, true);
             xhr[rank].upload.onprogress = function(e) {
@@ -38,6 +38,27 @@ class UploadFile
                 if(bar!= null){
                   bar.style.width=percentComplete+"%";
                   bar.innerHTML=Math.round(percentComplete)+"%";
+                  if(percentComplete===100)
+                  {
+                    debugger;
+                    xhr = new XMLHttpRequest();
+                    xhr.open('GET',"http://localhost:9000/watermark?filename="+file.name,true);
+                    xhr.onload = function (e) {
+                      if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                          console.log(xhr.responseText);
+                          var response = JSON.parse(xhr.responseText);
+                          console.log("Temperature(K): " + response.main.temp);
+                        } else {
+                          console.error(xhr.statusText);
+                        }
+                      }
+                    };
+                    xhr.onerror = function (e) {
+                      console.error(xhr.statusText);
+                    };
+                    xhr.send(null);
+                  }
                 }
               }
             };
