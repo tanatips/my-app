@@ -5,9 +5,6 @@ class TestUpLoadFile extends React.Component{
     constructor(pros){
         super(pros);
         this.handleClick = this.handleClick.bind(this);
-        this.handleDrop = this.handleDrop.bind(this);
-        this.handleDragOver = this.handleDragOver.bind(this);
-        this.handleDragLeave = this.handleDragLeave.bind(this);
         this.state = {
             url:"http://localhost:9000/upload"
         }
@@ -24,28 +21,9 @@ class TestUpLoadFile extends React.Component{
             var files = evt.dataTransfer.files;
             evt.preventDefault();
             this.className='upload-drop-zone';
-            debugger;
             var resultUpload = document.getElementById("resultUpload");
             Upload.SendFile(files,url,resultUpload);
           };
-    }
-    handleDrop (e){
-            e.preventDefault();
-            alert('drop test');
-            this.className='upload-drop-zone';
-            var resultUpload = document.getElementById("resultUpload");
-            var file = e.dataTransfer.files;
-            Upload.SendFile(file,this.state.url,resultUpload);
-    }
-    handleDragOver(e){
-        e.preventDefault();
-        this.className ='upload-drop-zone drop';
-        return false;
-    }
-    handleDragLeave(e){
-        e.preventDefault();
-            this.className ='upload-drop-zone';
-            return false;
     }
     
     handleClick (e){
