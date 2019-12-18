@@ -38,19 +38,24 @@ class UploadFile
                 if(bar!= null){
                   bar.style.width=percentComplete+"%";
                   bar.innerHTML=Math.round(percentComplete)+"%";
-                  if(percentComplete===100)
-                  {
-                    debugger;
-                    xhr = new XMLHttpRequest();
-                    xhr.open('GET',"http://localhost:9000/watermark?filename="+file.name,true);
+                }
+              }
+            };
+            xhr[rank].onload = function() {
+              if (this.status === 200) {
+                var resp = JSON.parse(this.response);
+                var filename = resp.filename[0].filename;
+                console.log('Server got:', filename);
+                xhr = new XMLHttpRequest();
+                    xhr.open('GET',"http://localhost:3030/watermark?filename="+filename,true);
                     xhr.onload = function (e) {
                       if (xhr.readyState === 4) {
                         if (xhr.status === 200) {
                           console.log(xhr.responseText);
-                          var response = JSON.parse(xhr.responseText);
-                          console.log("Temperature(K): " + response.main.temp);
+                          
                         } else {
                           console.error(xhr.statusText);
+                          
                         }
                       }
                     };
@@ -58,17 +63,10 @@ class UploadFile
                       console.error(xhr.statusText);
                     };
                     xhr.send(null);
-                  }
-                }
-              }
-            };
-            xhr.onload = function() {
-              if (this.status === 200) {
-                var resp = JSON.parse(this.response);
-                console.log('Server got:', resp);
-                
+
               };
             };
+            
             xhr[rank].send(fd);
     }
 

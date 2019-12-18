@@ -6,7 +6,7 @@ class TestUpLoadFile extends React.Component{
         super(pros);
         this.handleClick = this.handleClick.bind(this);
         this.state = {
-            url:"http://localhost:9000/upload"
+            url:"http://localhost:3030/upload"
         }
     }
     componentDidMount(){
